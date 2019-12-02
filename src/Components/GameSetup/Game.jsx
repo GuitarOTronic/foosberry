@@ -87,6 +87,7 @@ function Game() {
                     />}
                 {(finalScore && !gameInProgress) &&
                     <FinalScore
+                        clearGameState={clearGameState}
                         score={finalScore}
                         resetGame={resetGame}
                         teams={teams}

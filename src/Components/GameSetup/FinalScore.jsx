@@ -2,7 +2,7 @@ import React from 'react'
 import './scoreboard.css'
 
 
-function FinalScore({ score, teams, players, gameType, editScore, resetGame }) {
+function FinalScore({ score, teams, players, gameType, editScore, resetGame, clearGameState }) {
 
     const redOff = players.find(player => parseInt(player.id, 10) === parseInt(teams.red_off, 10))
     const redDef = players.find(player => parseInt(player.id, 10) === parseInt(teams.red_def, 10))
@@ -74,6 +74,7 @@ function FinalScore({ score, teams, players, gameType, editScore, resetGame }) {
                 <button className="submit-score-btn" onClick={handleSubmit}>SUBMIT</button>
                 <button className="edit-score-btn" onClick={(e)=>handleEdit(e, score)}>EDIT</button>
             </div>
+            <button className="cancel-btn" onClick={clearGameState}>CANCEL</button>
         </div>
     )
 }

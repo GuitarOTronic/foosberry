@@ -52,6 +52,7 @@
     position: absolute;
     bottom: 40px;
     left: 40px;
+    font-size: 16px;
 }
 
 @keyframes growShrink {
