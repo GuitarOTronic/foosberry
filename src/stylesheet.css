@@ -1,0 +1,115 @@
+body {
+    width:100%;
+    height: 100%;
+    background-image: url("./assets/cyber-background.jpg");
+}
+
+h1 {
+    display: block;
+    font-size:0;
+    margin-block-start:0;
+    margin-block-end:0;
+    margin-inline-start:0;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+form {
+    background:white;
+}
+
+.title-header {
+    font-size: 128px;
+    font-family: "Olympic Carrier Halftone Italic";
+    font-style: italic;
+    color: transparent;
+}
+
+.flex-container{
+    display: flex;
+    margin-top: 0;
+    justify-content: center;
+    -webkit-background-clip: text;
+    background-color: #AC0;
+    background-image: -webkit-linear-gradient(90deg, rgba(0, 0, 0, .3) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, .3) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, .3) 50%, rgba(0, 0, 0, .3) 25%, transparent 75%, transparent);
+}
+
+.flex-center{
+    display: flex;
+    justify-content: center;
+}
+
+.main-container{
+    height: 100vh;
+}
+
+.row {
+    display:flex;
+    flex-direction: row;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+#start-btn{
+    border: none;
+    color: #e65df9;
+    border-radius: 5px;
+    background: transparent;
+    text-shadow: 2px 5px #e65df9;
+    font-size: 112px;
+    -webkit-animation-name: blink;
+    -webkit-animation-duration: 3s;
+    animation-name: blink;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+.start-btn-container{
+    position: absolute;
+    bottom: 60px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.select-game-btn{
+    padding: 75px 25px;
+    background-image: linear-gradient(180deg,  #a5c600d9, #680c63cf);
+    background-color: rgba(50, 50, 50, .1);
+    font-family: "Olympic Carrier Halftone Italic";
+    font-size: 50px;
+    color: white;
+}
+
+.buttons-container{
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    bottom: 120px;
+    width: 100%;
+}
+
+
+@keyframes blink{
+    0% {
+        color: #fdf982;
+    }
+    40% {
+        color: transparent;
+    } 
+
+    100%{
+        color: #fdf982
+    }
+}
+
+@font-face {
+    font-family: "Olympic Carrier Halftone Italic";
+    src:url("./font//olympiccarrierhalfital.ttf"); 
+    /* url("./font/olympiccarriergradital-webfont.woff") format("woff"),
+    url("./font/olympiccarriergradital-webfont.woff2") format(".woff2"), */
+    
+    }
