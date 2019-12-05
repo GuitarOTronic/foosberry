@@ -74,7 +74,7 @@ function FinalScore({ score, teams, players, gameType, editScore, resetGame, cle
                 <button className="submit-score-btn" onClick={handleSubmit}>SUBMIT</button>
                 <button className="edit-score-btn" onClick={(e)=>handleEdit(e, score)}>EDIT</button>
             </div>
-            <button className="cancel-btn" onClick={clearGameState}>CANCEL</button>
+            <button className="reset-btn" onClick={clearGameState}>RESET</button>
         </div>
     )
 }

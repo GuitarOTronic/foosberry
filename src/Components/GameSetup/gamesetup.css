@@ -46,7 +46,7 @@
     animation-iteration-count: infinite;
 }
 
-.cancel-btn{
+.reset-btn{
     width: 20px;
     color: whitesmoke;
     position: absolute;
@@ -80,8 +80,6 @@
     justify-content: space-around;
 }
 
-
-
 .form-team-container label{
     padding: .5rem 0;
     font-weight: 500;
@@ -93,6 +91,28 @@
     border: 1px solid black;
     border-radius: 3px;
     width: 190px;
+}
+
+.black-switchy-arrow{
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    left: 50px;
+    top:53%;
+    transform: rotate(45deg);
+    margin: .5rem 0 .25rem 0;
+    fill: #FF9E2C;
+}
+
+.red-switchy-arrow{
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    right: 50px;
+    top:53%;
+    transform: rotate(220deg);
+    margin: .5rem 0 .25rem 0;
+
 }
 
 .red {

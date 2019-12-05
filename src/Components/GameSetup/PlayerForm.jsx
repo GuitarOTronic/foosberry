@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react'
+import SwitchyArrow from '../../assets/SwitchyArrow.svg'
 import './gamesetup.css'
 
 function PlayerForm({ gameType, startGame, teams, clearGameState }) {
@@ -27,7 +28,7 @@ function PlayerForm({ gameType, startGame, teams, clearGameState }) {
         }
 
         fetchData()
-        if(teams){
+        if (teams) {
             setFormState(teams)
         }
     }, [teams])
@@ -47,7 +48,7 @@ function PlayerForm({ gameType, startGame, teams, clearGameState }) {
         if (values.find(val => val === "-SELECT-") && gameType === "4Player") {
             setValidForm(false)
         }
-        else if(values.filter(val => val === "-SELECT-").length > 2 && gameType === "2Player"){
+        else if (values.filter(val => val === "-SELECT-").length > 2 && gameType === "2Player") {
             setValidForm(false)
         }
         else {
@@ -55,10 +56,29 @@ function PlayerForm({ gameType, startGame, teams, clearGameState }) {
         }
     }
 
-    function startGameHandler(e, formState, players){
+    function startGameHandler(e, formState, players) {
         e.preventDefault()
-        if(validForm){
+        if (validForm) {
             startGame(e, formState, players)
+        }
+    }
+
+    function handleSwapPositions(e) {
+        e.preventDefault()
+        const { black_def, black_off, red_def, red_off } = formState
+        if (e.target.name === "red-swapper") {
+            setFormState({
+                ...formState,
+                red_def: red_off,
+                red_off: red_def
+            })
+        }
+        else {
+            setFormState({
+                ...formState,
+                black_def: black_off,
+                black_off: black_def
+            })
         }
     }
 
@@ -77,6 +97,9 @@ function PlayerForm({ gameType, startGame, teams, clearGameState }) {
                                     return <option value={player.id} key={player.id}>{player.first_name} {player.last_name}</option>
                                 })}
                             </select>
+                            <div className="flex-center">
+                                <img name="black-swapper" onClick={handleSwapPositions} className="black-switchy-arrow" src={SwitchyArrow} alt="Switchy Arrow" />
+                            </div>
                             <label htmlFor="black_def" className="position-label">DEFENSE</label>
                             <select id="black_def" onChange={handleSelect} value={formState.black_def}>
                                 <option value="-SELECT-" disabled >-SELECT-</option>
@@ -94,6 +117,9 @@ function PlayerForm({ gameType, startGame, teams, clearGameState }) {
                                     return <option value={player.id} key={player.id}>{player.first_name} {player.last_name}</option>
                                 })}
                             </select>
+                            <div className="flex-center">
+                                <img name="red-swapper" onClick={handleSwapPositions} className="red-switchy-arrow" src={SwitchyArrow} alt="Switchy Arrow" />
+                            </div>
                             <label htmlFor="red_def" className="position-label">DEFENSE</label>
                             <select id="red_def" onChange={handleSelect} value={formState.red_def}>
                                 <option value="-SELECT-" disabled >-SELECT-</option>
@@ -112,7 +138,7 @@ function PlayerForm({ gameType, startGame, teams, clearGameState }) {
                         <div className="column form-team-container">
                             <label className="team-label black">BLACK</label>
                             <select id="black_off" value={formState.black_off} onChange={handleSelect}>
-                                <option value="-SELECT-"  disabled>-SELECT-</option>
+                                <option value="-SELECT-" disabled>-SELECT-</option>
                                 {players.map((player) => {
                                     return <option value={player.id} key={player.id}>{player.first_name} {player.last_name}</option>
                                 })}
@@ -121,7 +147,7 @@ function PlayerForm({ gameType, startGame, teams, clearGameState }) {
                         <div className="column form-team-container">
                             <label className="team-label red">RED</label>
                             <select id="red_off" value={formState.red_off} onChange={handleSelect}>
-                                <option value="-SELECT-"  disabled>-SELECT-</option>
+                                <option value="-SELECT-" disabled>-SELECT-</option>
                                 {players.map((player) => {
                                     return <option value={player.id} key={player.id}>{player.first_name} {player.last_name}</option>
                                 })}
@@ -133,7 +159,7 @@ function PlayerForm({ gameType, startGame, teams, clearGameState }) {
             <div className="flex-center">
                 <button onClick={(e) => startGameHandler(e, formState, players)} className={validForm ? "play-btn-enabled play-btn" : "play-btn-disabled play-btn"}>PLAY</button>
             </div>
-            <button className="cancel-btn" onClick={clearGameState}>CANCEL</button>
+            <button className="reset-btn" onClick={clearGameState}>RESET</button>
         </form>
     )
 }
