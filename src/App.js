@@ -4,16 +4,29 @@ import openSocket from 'socket.io-client';
 import './stylesheet.css'
 
 class App extends Component {
+  constructor(){
+    this.socket= openSocket('http://localhost:8080')
+    this.state ={
+      goalSensed: null
+    }
+  }
+  
+  componentDidMount(){
+    this.socket.emit('goal', 'heeeey');
+    this.socket.on("goal", team =>{
+      console.log(team)
+      this.setState({goalSensed: team})
+    })
+    this.socket.on('sup', (data) => {
+      console.log(data);
+    });
+  }
 
   render(){
-    const socket = openSocket('http://localhost:8080');
-    socket.emit('goal', 'heeeey');
-    socket.on('sup', (data) => {
-    console.log(data);
-  });
+   
     return (
        <main className="column main-container" id="main">
-          <Game />
+          <Game goalSensed={this.state.goalSensed} socket={this.socket}/>
       </main>
     );
   }

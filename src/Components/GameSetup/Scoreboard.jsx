@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import './scoreboard.css'
 
-function Scoreboard({gameOver, finalScore, teams, resetGame}) {
+function Scoreboard({gameOver, finalScore, teams, resetGame, goalSensed}) {
   
-    const [score, setScore] = useState({ red: 0, black: 4 })
+    const [score, setScore] = useState({ red: 0, black: 0 })
     useEffect(()=>{
         if((score.black === 5 || score.red === 5) && !finalScore){
             gameOver(score)
@@ -15,6 +15,10 @@ function Scoreboard({gameOver, finalScore, teams, resetGame}) {
             setScore(finalScore)
         }
     }, [])
+
+    useEffect(()=>{
+        setScore({...score, [goalSensed.team]: (score[goalSensed] + 1)})
+    }, [goalSensed])
 
     function handleSubmit(e){
         e.preventDefault()

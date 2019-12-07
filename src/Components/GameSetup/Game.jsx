@@ -5,7 +5,7 @@ import Scoreboard from './Scoreboard'
 import FinalScore from './FinalScore'
 import Rematch from './Rematch'
 
-function Game() {
+function Game({...props}) {
 
     const [gameType, setGameType] = useState(null)
     const [showGameTypes, setShowGameTypes] = useState(null)
@@ -20,6 +20,7 @@ function Game() {
         setGameInProgress(true)
         setTeams(formState)
         setPlayers(players)
+        props.socket.emit("start game")
     }
 
     function gameOver(score) {
@@ -76,6 +77,7 @@ function Game() {
                         teams={teams}
                         startGame={startGame}
                         clearGameState={clearGameState}
+                        socket={props.socket}
                     />}
                 {gameInProgress &&
                     <Scoreboard
@@ -84,6 +86,7 @@ function Game() {
                         finalScore={finalScore}
                         teams={teams}
                         resetGame={resetGame}
+                        goalSensed={props.goalSensed}
                     />}
                 {(finalScore && !gameInProgress) &&
                     <FinalScore
