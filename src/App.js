@@ -8,7 +8,7 @@ class App extends Component {
     super(props)
     this.socket= openSocket('http://localhost:8080')
     this.state ={
-      goalSensed: null
+      goalSensed: {team: null}
     }
   }
   
