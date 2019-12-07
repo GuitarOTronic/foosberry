@@ -4,7 +4,8 @@ import openSocket from 'socket.io-client';
 import './stylesheet.css'
 
 class App extends Component {
-  constructor(){
+  constructor(props){
+    super(props)
     this.socket= openSocket('http://localhost:8080')
     this.state ={
       goalSensed: null
