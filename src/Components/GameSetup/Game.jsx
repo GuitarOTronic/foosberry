@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import GameTypes from './GameTypes'
 import PlayerForm from './PlayerForm'
 import Scoreboard from './Scoreboard'
@@ -14,6 +14,10 @@ function Game({...props}) {
     const [players, setPlayers] = useState(null)
     const [finalScore, setFinalScore] = useState(null)
     const [showRematch, setShowRematch] = useState(false)
+
+    useEffect(()=>{
+        props.socket.on('start game', game => console.log('started your games s', game))
+    }, [])
 
     function startGame(e, formState, players) {
         e.preventDefault()
