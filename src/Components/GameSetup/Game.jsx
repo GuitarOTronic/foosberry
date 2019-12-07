@@ -20,7 +20,7 @@ function Game({...props}) {
         setGameInProgress(true)
         setTeams(formState)
         setPlayers(players)
-        props.socket.emit("start game", players)
+        props.socket.emit("start game", formState)
     }
 
     function gameOver(score) {
